@@ -146,4 +146,4 @@ Daily supplier files would need a filename convention that preserves the require
 
 ## AI assistance
 
-I used Claude (Anthropic, through Claude Code) to help me write the code for this project.
+I used Codex to help me write the code for this project.
