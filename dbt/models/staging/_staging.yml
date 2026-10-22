@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: stg_products
+    columns:
+      - name: product_id
+        data_tests: [unique, not_null]
+      - name: sku_clean
+        description: SKU without surrounding whitespace. Must be unique, or the cost join would multiply rows.
+        data_tests: [unique, not_null]
+
+  - name: stg_orders
+    columns:
+      - name: order_id
+        data_tests: [unique, not_null]
+      - name: order_date
+        description: Riyadh calendar date of created_at (UTC+3).
+        data_tests: [not_null]
+
+  - name: stg_supplier_prices
+    columns:
+      - name: valid_from
+        description: Every supplier row must have a readable date, or it cannot be placed on the timeline.
+        data_tests: [not_null]

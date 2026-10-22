@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: weekly_margin
+    description: Weekly gross margin by city and category.
+    columns:
+      - name: iso_week
+        data_tests: [not_null]
+      - name: city
+        data_tests: [not_null]
+      - name: category
+        data_tests: [not_null]
+      - name: lines
+        data_tests: [not_null]

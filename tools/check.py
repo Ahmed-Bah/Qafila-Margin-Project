@@ -105,7 +105,7 @@ def main() -> None:
 
     # 5. Iceberg history and dbt tests
     snaps = len(cat.load_table("gold.weekly_margin").snapshots())
-    check(snaps >= 1, f"Iceberg: gold.weekly_margin has {snaps} snapshot(s); run again and this number should grow")
+    check(snaps >= 1, f"Iceberg: gold.weekly_margin has {snaps} snapshot(s); unchanged inputs should keep this count unchanged")
     rr = ROOT / "dbt" / "target" / "run_results.json"
     if check(rr.exists(), "dbt: run_results.json exists", "run dbt build (run.py does)"):
         tests = [r for r in json.loads(rr.read_text(encoding="utf-8"))["results"] if r["unique_id"].startswith("test.")]

@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: supplier_prices_validated
+    description: Every supplier price row with a verdict (reject_reason is NULL when usable).
+    columns:
+      - name: reject_reason
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [unknown_sku, invalid_cost]
+  - name: product_cost_history
+    description: SCD2 history of supplier costs, one row per SKU per cost version.
+    columns:
+      - name: sku
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_products')
+                field: sku_clean
+      - name: unit_cost_sar
+        data_tests: [not_null]
+      - name: valid_from
+        data_tests: [not_null]

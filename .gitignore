@@ -2,6 +2,9 @@
 data/
 data_*/
 warehouse/
+warehouse_*/
+.verification/
+.agents/
 *.duckdb
 *.duckdb.wal
 

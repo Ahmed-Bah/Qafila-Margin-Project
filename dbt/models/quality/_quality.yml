@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: price_quarantine
+    description: One row per rejected supplier price row.
+    columns:
+      - name: reason
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [unknown_sku, invalid_cost]
